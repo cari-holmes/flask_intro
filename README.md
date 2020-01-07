@@ -1,2 +1,4 @@
-This flask respository is a project to learn flask.
+# Learning Flask
+
+This respository is a project to learn flask.
 
