@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import numpy as np
+from model import predict
 
 app = Flask(__name__)
 
@@ -29,3 +30,19 @@ def handle_response():
     greeting += first_name + '!'
 
     return render_template('for-response.html', greeting=greeting)
+
+
+@app.route('/write-message')
+def write_message():
+    return render_template('write-message.html')
+
+
+@app.route('/deploy-model', methods=['POST'])
+def deploy_model():
+    message = request.form['message']
+    prediction = "The message you wrote is: "
+    prediction += message + '!'
+    function = 'Your message is '
+    function += predict(message)
+
+    return render_template('deploy-model.html', prediction=prediction)
