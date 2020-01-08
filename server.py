@@ -41,8 +41,8 @@ def write_message():
 def deploy_model():
     message = request.form['message']
     prediction = "The message you wrote is: "
-    prediction += message + '!'
-    function = 'Your message is '
-    function += predict(message)
+    prediction += message + '.'
+    function = "Your message is "
+    function += predict(message) + '!'
 
-    return render_template('deploy-model.html', prediction=prediction)
+    return render_template('deploy-model.html', prediction=prediction, function=function)
